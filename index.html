@@ -4,35 +4,92 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>דשבורדי פוקס – קורס ויזואליזציה</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
-    body {font-family: 'Heebo', sans-serif; background: #f8fafc; color: #0f172a; margin: 0; padding: 0;}
-    .container {max-width: 900px; margin: auto; padding: 20px;}
-    h1 {text-align: center; margin-bottom: 30px;}
-    .grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;}
-    .card {background: white; padding: 20px; border-radius: 12px; text-decoration: none; color: inherit; box-shadow: 0 4px 8px rgba(0,0,0,0.05); transition: 0.2s;}
-    .card:hover {transform: translateY(-4px); box-shadow: 0 6px 12px rgba(0,0,0,0.1);}
-    .card h3 {margin-top: 0;}
+    :root{
+      --fox-red:#e60012;
+      --text:#111;
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:900px;margin:0 auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--fox-red);padding-bottom:12px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .box{width:40px;height:40px;background:var(--fox-red)}
+    h1{font-size:1.4rem;margin:0}
+    .subtitle{color:var(--muted);font-size:.95rem;margin-top:4px}
+
+    .about{border:1px solid var(--border);border-radius:8px;padding:14px;margin:18px 0}
+    .about h2{margin:0 0 8px;font-size:1.05rem}
+    .about p{margin:0 0 6px;color:var(--text);line-height:1.5}
+    .about .note{color:var(--muted);font-size:.92rem;border-inline-start:4px solid var(--fox-red);padding-inline-start:10px}
+
+    .links{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .card{grid-column:span 12;border:1px solid var(--border);border-radius:8px;padding:14px;text-decoration:none;color:inherit;display:block}
+    .card:hover{border-color:var(--fox-red)}
+    .card h3{margin:0 0 6px;font-size:1.05rem}
+    .card p{margin:0 0 6px;color:var(--muted);font-size:.93rem}
+    .meta{margin:0;color:var(--muted);font-size:.9rem;padding-inline-start:18px}
+
+    .btn{display:inline-block;background:var(--fox-red);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;border:1px solid var(--fox-red)}
+    .btn:hover{filter:brightness(.95)}
+
+    footer{margin-top:22px;padding-top:10px;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+    @media(min-width:700px){ .card{grid-column:span 6} }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>דשבורדי פוקס – קורס ויזואליזציה</h1>
-    <div class="grid">
-      <a class="card" href="https://public.tableau.com/app/profile/inbar.barak/viz/1_17538928650010/1-?publish=yes" target="_blank">
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="box" aria-hidden="true"></div>
+        <div>
+          <h1>דשבורדי פוקס – קורס ויזואליזציה</h1>
+          <div class="subtitle">עמוד קישורים פשוט עם פירוט קצר וקישורים לטאבלו</div>
+        </div>
+      </div>
+      <a class="btn" href="#top" aria-label="גלילה לראש">ראש הדף</a>
+    </header>
+
+    <section class="about" aria-label="אודות המערכת">
+      <h2>אודות המערכת</h2>
+      <p>האתר מציג שלושה דשבורדים המבוססים על נתוני מכירות מדומים של רשת פוקס לשנת 2024. הדשבורדים מותאמים לקהלים שונים בארגון – הנהלה, תפעול ושיווק – ומספקים כלי קבלת החלטות המבוססים על נתונים.</p>
+      <p class="note">הנתונים נוצרו לצורך הדגמה בלבד, ומכילים מידע על תאריך, סניף, אזור, קטגוריה, שם מוצר, מחיר ליחידה, כמות שנמכרה וסך הכנסות.</p>
+    </section>
+
+    <main class="links" aria-label="קישורים לדשבורדים">
+      <a class="card" href="https://public.tableau.com/app/profile/inbar.barak/viz/1_17538928650010/1-?publish=yes" target="_blank" rel="noopener noreferrer">
         <h3>דשבורד 1 – צוות הנהלה</h3>
-        <p>מגמות מכירה לפי קטגוריה ואזור – כלי קבלת החלטות אסטרטגי להנהלה.</p>
+        <p>מציג מגמות מכירה לפי קטגוריה ואזור, לזיהוי קטגוריות רווחיות, תכנון יעדים והקצאת משאבים.</p>
+        <ul class="meta">
+          <li>סוגי תרשימים: קווי (הכנסות חודשיות), עוגה (חלוקת מכירות לפי קטגוריה), פיזור (מחיר מול כמות).</li>
+        </ul>
       </a>
-      <a class="card" href="https://public.tableau.com/app/profile/inbar.barak/viz/2_17538928908130/2-?publish=yes" target="_blank">
+
+      <a class="card" href="https://public.tableau.com/app/profile/inbar.barak/viz/2_17538928908130/2-?publish=yes" target="_blank" rel="noopener noreferrer">
         <h3>דשבורד 2 – צוות תפעולי</h3>
-        <p>רווחיות לפי קטגוריות ומוצרים – ניהול מלאי ותמחור חכם.</p>
+        <p>מציג רווחיות לפי קטגוריות ומוצרים לזיהוי מוצרים מובילים ושיפור תפעול וניהול מלאי.</p>
+        <ul class="meta">
+          <li>סוגי תרשימים: עמודות אופקי, פיזור.</li>
+        </ul>
       </a>
-      <a class="card" href="https://public.tableau.com/app/profile/inbar.barak/viz/3_17538929353520/3-?publish=yes" target="_blank">
+
+      <a class="card" href="https://public.tableau.com/app/profile/inbar.barak/viz/3_17538929353520/3-?publish=yes" target="_blank" rel="noopener noreferrer">
         <h3>דשבורד 3 – צוות שיווקי</h3>
-        <p>מגמות מכירה חודשיות והשוואת הכנסות – כלי לניתוח קמפיינים ושיווק.</p>
+        <p>מציג מגמות חודשיות בכמויות ובהכנסות לזיהוי עונתיות והערכת אפקטיביות קמפיינים.</p>
+        <ul class="meta">
+          <li>סוגי תרשימים: מפת חום, קווים (שינוי בכמויות), קווים (שינוי בהכנסות).</li>
+        </ul>
       </a>
-    </div>
+    </main>
+
+    <footer>
+      <span>© 2025 – קורס ויזואליזציה</span>
+      <span>GitHub Pages</span>
+    </footer>
   </div>
 </body>
 </html>
